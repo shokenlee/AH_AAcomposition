@@ -29,6 +29,7 @@ minimum_dfactor = 0.68  # Based on HeliQuest help page
 
 # Playable parameters
 bulky_hydrophobic_residues = ['V', 'I', 'L', 'F', 'W', 'M', 'Y']
+hydrophobic_residues = ['V', 'L', 'I', 'F', 'W', 'M', 'Y', 'C', 'P']
 minium_helices = 6  # How many amino acids in both ends of an AA chunk have to be helix
 minimum_len_consecutive_hydro = 3
 minimum_hydrophobic_moment = 0.4
@@ -111,6 +112,7 @@ class AA_seq():
         self.sequence = sequence
         self.netcharge = None
         self.mean_hydrophobicity = None
+        self.hydrophobic_density = None
         self.mean_hydrophobic_moment = None
         self.moment_degree = None
         self.dfactor = None
@@ -142,6 +144,28 @@ class AA_seq():
             print("Seems like unintentional update is attempted")
                 
         return self.mean_hydrophobicity
+    
+
+    def calculate_hydrophobic_density(self):
+        '''
+        Return the hydrophobic density (% of hydrophobic residues)
+        e.g. 'FLNNAMGTT' -> 4 / 9 * 100 = 44.4
+        '''
+        
+        # Prevent unitentional update 
+        if self.hydrophobic_density == None:
+            self.hydrophobic_density = 0
+            count_hydrophobic_residues = 0
+            
+            for residue in self.sequence:
+                if residue in hydrophobic_residues:
+                    count_hydrophobic_residues += 1
+
+            self.hydrophobic_density = count_hydrophobic_residues / len(self.sequence) * 100
+        else:
+            print("Seems like unintentional update is attempted")
+
+        return self.hydrophobic_density
     
 
     def calculate_hydrophobic_moment(self):
