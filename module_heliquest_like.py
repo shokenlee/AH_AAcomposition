@@ -113,6 +113,7 @@ class AA_seq():
         self.netcharge = None
         self.mean_hydrophobicity = None
         self.hydrophobic_density = None
+        self.RK_hydrophobic_ratio = None
         self.mean_hydrophobic_moment = None
         self.moment_degree = None
         self.dfactor = None
@@ -166,6 +167,34 @@ class AA_seq():
             print("Seems like unintentional update is attempted")
 
         return self.hydrophobic_density
+    
+
+    def calculate_RK_hydrophobic_ratio(self):
+        '''
+        Return the ratio of R and K residues among hydrophobic residues (%)
+        e.g. 'FLRNNAMKTT' -> 2 / 4 * 100 = 50.0
+        '''
+        
+        # Prevent unitentional update 
+        if self.RK_hydrophobic_ratio == None:
+            self.RK_hydrophobic_ratio = 0
+            count_hydrophobic_residues = 0
+            count_RK_residues = 0
+            
+            for residue in self.sequence:
+                if residue in hydrophobic_residues:
+                    count_hydrophobic_residues += 1
+                if residue in ['R', 'K']:
+                    count_RK_residues += 1
+
+            if count_hydrophobic_residues > 0:
+                self.RK_hydrophobic_ratio = count_RK_residues / count_hydrophobic_residues
+            else:
+                self.RK_hydrophobic_ratio = "N/A"
+        else:
+            print("Seems like unintentional update is attempted")
+
+        return self.RK_hydrophobic_ratio
     
 
     def calculate_hydrophobic_moment(self):
