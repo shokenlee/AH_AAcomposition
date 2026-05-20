@@ -1,6 +1,7 @@
 # Amphipahtic helices_Amino-acid composition
 
-Scripts for amino acid composition analysis of amphipathic helices in [Lee et al. bioRxiv 2024](https://www.biorxiv.org/content/10.1101/2024.11.14.623600v2)
+Scripts for amino acid composition analysis of amphipathic helices in 
+Lee et al. 2026 Nature Communications "Screening of amphipathic helices identifies features linked to inner nuclear membrane properties"
 
 Tested on Python v3.8 and v3.11 with Anaconda v2.6.
 
