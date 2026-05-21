@@ -12,6 +12,7 @@ Amino acid composition analysis in Figure 2 and NEES analysis in Figure 5 are do
 - `NEES.xlsx`: NE enrichment sccore data from Figure 4
 - `AH_sequences.xlsx`: AH names and amino acid sequence
 - `ddF.csv`: ddF values
+- `AH_selected.csv`: AH paremeters for analysis in Figure 5
 ### Analysis
 - `NEES_Import.ipynb`: NE enrichment scores were analyzed to give their medians
   - Output: `NEES_summary.csv` and `NEES_Normalized.csv`
@@ -23,6 +24,8 @@ Amino acid composition analysis in Figure 2 and NEES analysis in Figure 5 are do
   - Output: `All.pdf` and `heatmap.csv` 
 - `LDA.ipynb`: Linear discriminant analysis
   - Output: `lda_plot.pdf` and `lda_coefficients.csv` and `lda_results.csv`
+- `PLS.ipynb`: Partial Least Square analysis
+  - Output: `pls1_loadings_selected.csv` and `pls1_scores.csv`
 - `ddF_plot.ipynb`: Ploting NE enrichment score with ddF values
   - Output: `ddFvsNEES.csv`
 ### Module
